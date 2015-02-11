@@ -6,23 +6,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        
         <p id="p1">My name is Brendon</p>
-
-        <script>
-            document.getElementById("p1").innerHTML = "My name is Julie!";
-        </script>
-
+        
         <p>The paragraph above was changed by a script.</p>
         
         <p id="p2">Hello Everybody!</p>
         <p id="p3">How are you?</p>
-
+        
+        <p>The paragraph above was changed by a script.</p>
+        
+        <div onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" 
+         style="background-color:#D94A38;width:120px;height:20px;padding:40px;">
+         Mouse Over Me</div>
+        
         <script>
+            document.getElementById("p1").innerHTML = "My name is Julie!";
+            
             document.getElementById("p3").style.color = "green";
             document.getElementById("p3").style.fontFamily = "Arial";
             document.getElementById("p3").style.fontSize = "larger";
-        </script>
+            
+            function mouseOver(obj) {
+                obj.style.backgroundColor = "#1ec5e5";
+                obj.innerHTML = "Thank You!"
+            }
 
-        <p>The paragraph above was changed by a script.</p>
+            function mouseOut(obj) {
+                obj.style.backgroundColor="#D94A38";
+                obj.innerHTML = "Mouse Over Me"
+            }
+        </script>
+        
     </body>
 </html>
