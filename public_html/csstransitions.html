@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div {
+    position:absolute;
+    top: 40px;
+    width: 100px;
+    height: 100px;
+    background: orange;
+    -webkit-transition: width 2s;
+    transition: width 2s;
+}
+div2 {
+    position:absolute;
+    top: 150px; 
+    width: 100px;
+    height: 100px;
+    background: red;
+    -webkit-transition: transform 2s;
+}
+div3 {
+    position:absolute;
+    top: 260px; 
+    width: 100px;
+    height: 100px;
+    background: purple;
+    transition: transform 2s;
+}
+div4 {
+    position:absolute;
+    top: 370px; 
+    width: 100px;
+    height: 100px;
+    background: blue;
+    transition: transform 2s;
+}
+div5 {
+    position:absolute;
+    top: 480px; 
+    width: 100px;
+    height: 100px;
+    background: green;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, transform 2s;
+}
+div6 {
+    position:absolute;
+    top: 590px; 
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    -webkit-transition-property: width;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: linear;
+    -webkit-transition-delay: 2s;
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 2s;
+}
+div7 {
+    position: absolute;
+    top:700px;
+}
+div:hover {
+    width: 300px;
+}
+div2:hover {    
+    -webkit-transform:rotate(45deg);
+}
+div3:hover {
+    transform:skew(-35deg);    
+}
+div4:hover {
+    transform:translate(10px, 20px);
+}
+div5:hover {
+    width: 200px;
+    height: 200px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+div6:hover {
+    width: 200px;
+}
+
+
+</style>
+</head>
+<body>
+<p>Transitions using CSS3 - Browser Support - What property? What duration?</p>
+<div>"Change width property"</div>
+
+<div2>"Change rotate property"</div2>
+
+<div3>"Skew"</div3>
+
+<div4>"Translate"</div4>
+
+<div5>"Multiple Transitions"</div5>
+
+<div6>"More Transitions - Wait for it"</div6>
+
+<div7><a href="http://css3.bradshawenterprises.com/transitions/">Browser Support and Cool Stuff</a>
+</div7>
+
+</body>
+</html>
