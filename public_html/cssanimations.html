@@ -3,8 +3,8 @@
 <head>
 <style> 
     div {
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
         background: red;
         position: relative;
         -webkit-animation: myfirst 5s linear 2s infinite alternate;
@@ -12,7 +12,7 @@
 
 /* Chrome, Safari, Opera */
     @-webkit-keyframes myfirst {
-        0%   {background:red; left:0px; top:0px;}
+        0%   {background:red; left:0px; top:0px; -webkit-transform:rotate(90deg);}
         25%  {background:yellow; left:200px; top:0px;}
         50%  {background:blue; left:200px; top:200px;}
         75%  {background:green; left:0px; top:200px;}
@@ -21,7 +21,7 @@
 
 /* Standard syntax */
     @keyframes myfirst {
-        0%   {background:red; left:0px; top:0px;}
+        0%   {background:red; left:0px; top:0px; transform:rotate(90deg);}
         25%  {background:yellow; left:200px; top:0px;}
         50%  {background:blue; left:200px; top:200px;}
         75%  {background:green; left:0px; top:200px;}
@@ -30,8 +30,6 @@
 </style>
 </head>
 <body>
-
-<p><b>Note:</b> This example does not work in Internet Explorer 9 and earlier versions.</p>
 
 <div></div>
 
