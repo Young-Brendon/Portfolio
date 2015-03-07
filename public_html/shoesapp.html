@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Shoes App </title>
+        <meta name="Author" content="Brendon Young">
+        <link rel="stylesheet" href="shoeapp.css"/>
+        <script type="text/javascript">			
+            function firstClick(){
+                var fname = document.getElementById('fname').value;
+                var lname = document.getElementById('lname').value;
+                var person = personName(fname, lname);
+                loadHTMLForm(person);
+            }
+            function personName(fname, lname){
+                var name = fullName(fname, lname);
+                var person = {
+                    first: fname,
+                    last: lname
+                };
+                if (!localStorage.getItem(name)){
+                    localStorage.setItem(name, JSON.stringify(person));
+                } else {
+                    person = JSON.parse(localStorage.getItem(name));
+                }
+                return person;
+            }
+            function fullName(fname, lname){
+                return fname + " " + lname;
+            }			
+            function loadHTMLForm(person){
+                var xmlhttp;
+                if (window.XMLHttpRequest){					
+                    xmlhttp=new XMLHttpRequest();
+                } else {					
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function() {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                        document.getElementById("shoes").innerHTML=xmlhttp.responseText;
+                        document.getElementById("fnameWeather").value = person.first;
+			document.getElementById("lnameWeather").value = person.last;						
+			document.getElementById("button").innerHTML="Click";
+			document.getElementById("button").onclick=calculate;
+                    }
+                };
+                xmlhttp.open("GET","weather.html",true);
+                xmlhttp.send();
+            }
+			
+            function calculate(){
+                var fname = document.getElementById("fnameWeather").value;
+                var lname = document.getElementById("lnameWeather").value;
+                var wea = document.getElementById("weather").value;
+                var name = fullName(fname, lname);
+                var person = JSON.parse(localStorage.getItem(name));								
+                person.weather = wea;
+                localStorage.setItem(name, JSON.stringify(person));
+                var img;
+                switch (person.weather) {
+                    case "sunny": img = "<img src='sunny.jpg' class='loading' alt='Happy Face'/>";
+                        break;
+                    case "rainy": img = "<img src='rainy.png' class='loading' alt='Sad Face'/>";
+                        break;
+                    case "windy": img = "<img src='windy.jpg' class='loading' alt='Batman'/>";
+                        break;
+                }
+                document.getElementById("shoes").innerHTML = img + "<h2>Please Wait...</h2>";
+                timer(person);
+            }
+            function timer(person){
+		setTimeout(function(){secondClick(person);}, 2000);
+            }
+            function secondClick(person){
+                var div = document.getElementById("shoes");
+                switch(person.weather) {
+                    case "sunny": div.innerHTML = "<p>" + person.first + " you should wear sandals.</p>";
+                        break;
+                    case "rainy": div.innerHTML = "<p>" + person.first + " you should wear galoshes.</p>";
+                        break;
+                    case "windy": div.innerHTML = "<p>" + person.first + " you should wear tennis shoes.</p>";
+                        break;
+                }				
+            }
+        </script>
+    </head>
+    <body>		
+        <h1>Shoe App</h1>
+        <p>This app will tell you what kind of shoes to wear based on the weather.</p>
+        <div id="shoes">
+        <h2>Please enter your name:</h2>
+        <form name="name">
+            <label for="fname">First Name:</label>
+            <input type="text" name="fname" id="fname"/><br/>
+            <label for="lname">Last Name:</label>
+            <input type="text" name="lname" id="lname"/><br/>
+            <button type="button" id="button" onclick="firstClick()">Click</button>
+        </form>
+        </div>
+    </body>
+</html>
