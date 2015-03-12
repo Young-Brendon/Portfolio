@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON2 Example using parse and stringify</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p id="demo"></p>
+
+    <script>
+        var jsontext = '{"firstname":"Brendon","lastname":"Young","phone":"(800) 555-0100"}';
+        var contact = JSON.parse(jsontext);
+        document.write(contact.lastname + ", " + contact.firstname + ", " + contact.phone + "</br>");
+        
+        var contact = new Object();
+        contact.firstname = "Brendon";
+        contact.lastname = "Young";
+        contact.phone = "(800) 555-0100";
+
+        var memberfilter = new Array();
+        memberfilter[0] = "firstname";
+        memberfilter[1] = "lastname";
+        memberfilter[2] = "phone";
+        var jsonText = JSON.stringify(contact, memberfilter, "\t");
+        document.write(jsonText);
+    </script>
+    </body>
+</html>
